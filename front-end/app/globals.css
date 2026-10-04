@@ -56,6 +56,16 @@
 }
 
 @layer components {
+  .hero-slide {
+    transition: opacity 1200ms ease-out, transform 7000ms ease-out;
+    will-change: opacity, transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+      transition: opacity 400ms ease-out;
+      transform: none !important;
+    }
+  }
   .card {
     border-radius: var(--radius-2xl);
     border: 1px solid var(--color-border);
