@@ -1,0 +1,34 @@
+# Dependencies / build output
+node_modules/
+.next/
+out/
+dist/
+build/
+.vercel/
+*.tsbuildinfo
+
+# Java / Maven
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.env
+models/
+data/raw/
+data/*.csv
+
+# Env / editor / OS
+.env*.local
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

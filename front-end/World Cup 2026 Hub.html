@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>World Cup 2026 Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#150d3a;--bg2:#21155a;--card:#2a1d6e;--ink:#fff7ec;--mute:#b9aee8;--pink:#ff3d81;--gold:#ffc83d;--aqua:#18d6c1;--line:rgba(255,255,255,.14);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#fff6e6;--bg2:#ffe9c4;--card:#ffffff;--ink:#1a1040;--mute:#5d4f93;--line:rgba(26,16,64,.15)}}
+:root[data-theme="dark"]{--bg:#150d3a}
+*{box-sizing:border-box;margin:0}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 Figtree,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.disp{font-family:Unbounded,Impact,sans-serif;line-height:1.05}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;gap:6px;align-items:center;padding:12px clamp(16px,4vw,48px);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav b{font:800 15px Unbounded,sans-serif;margin-right:auto}
+nav a{text-decoration:none;font-weight:600;font-size:14px;padding:8px 14px;border-radius:99px;color:var(--mute)}
+nav a:hover{background:var(--card);color:var(--ink)}
+.hero{position:relative;padding:clamp(40px,8vw,96px) clamp(16px,4vw,48px) 56px;background:
+radial-gradient(600px 400px at 85% 10%,rgba(255,61,129,.45),transparent 70%),
+radial-gradient(500px 400px at 10% 90%,rgba(24,214,193,.3),transparent 70%),var(--bg2);overflow:hidden}
+.pitch{position:absolute;inset:0;opacity:.13;pointer-events:none}
+.big{font-size:clamp(120px,26vw,330px);font-weight:800;color:transparent;-webkit-text-stroke:3px var(--gold);letter-spacing:-.04em;position:relative}
+.big span{color:var(--pink);-webkit-text-stroke:0;position:absolute;left:.06em;top:.06em;z-index:-1}
+.hero h1{font-size:clamp(28px,5vw,56px);max-width:16ch;margin-top:-.2em}
+.hero p{max-width:52ch;color:var(--mute);margin:18px 0 28px;font-size:18px}
+.ball{position:absolute;right:clamp(-30px,4vw,60px);top:clamp(40px,10vw,110px);width:clamp(110px,22vw,260px);animation:roll 14s linear infinite}
+@keyframes roll{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.ball{animation:none}html{scroll-behavior:auto}}
+.btn{display:inline-block;background:var(--gold);color:#1a1040;font-weight:600;padding:14px 26px;border-radius:99px;text-decoration:none;border:0;cursor:pointer;font-size:16px}
+.btn.o{background:transparent;color:var(--ink);border:2px solid var(--line);margin-left:8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-top:48px;max-width:760px}
+.stat{border-left:4px solid var(--aqua);padding-left:14px}
+.stat:nth-child(2){border-color:var(--pink)}.stat:nth-child(3){border-color:var(--gold)}
+.stat b{display:block;font:800 34px Unbounded,sans-serif}
+.stat small{color:var(--mute)}
+section{padding:72px clamp(16px,4vw,48px)}
+.head{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:end;margin-bottom:28px}
+h2{font-size:clamp(26px,4vw,44px)}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.chip,input{font:600 14px Figtree,sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 16px}
+.chip{cursor:pointer}.chip[aria-pressed=true]{background:var(--pink);border-color:var(--pink);color:#fff}
+input{min-width:200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-5px);border-color:var(--c,var(--gold))}
+.card::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--c,var(--gold));opacity:.22}
+.flag{font-size:54px;line-height:1}
+.card h3{font-size:19px;margin:12px 0 4px}
+.card p{color:var(--mute);font-size:14px}
+.tag{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;padding:4px 12px;border-radius:99px;background:var(--c,var(--gold));color:#1a1040}
+.stars{margin-top:10px;letter-spacing:2px;color:var(--gold)}
+.pl .num{font:800 64px Unbounded,sans-serif;color:transparent;-webkit-text-stroke:2px var(--c);position:absolute;right:14px;bottom:-6px;opacity:.9}
+.stad{padding:0;display:flex;flex-direction:column}
+.art{height:130px;background:linear-gradient(135deg,var(--c),var(--bg2));position:relative}
+.art svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.stad .in{padding:20px 22px 24px}
+.cap{font:800 26px Unbounded,sans-serif;margin-top:10px}
+.cap small{font:400 13px Figtree;color:var(--mute);margin-left:6px}
+.bar{height:8px;border-radius:9px;background:var(--line);margin-top:8px}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--c)}
+.alt{background:var(--bg2)}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border:0}.row span:first-child{font-size:26px}.row em{margin-left:auto;font:800 15px Unbounded;font-style:normal;color:var(--aqua)}
+.empty{grid-column:1/-1;color:var(--mute);padding:30px;text-align:center;border:2px dashed var(--line);border-radius:22px}
+footer{padding:40px clamp(16px,4vw,48px);color:var(--mute);border-top:1px solid var(--line);font-size:14px}
+</style>
+</head>
+<body>
+<nav aria-label="Main"><b>WC26</b><a href="#teams">Teams</a><a href="#players">Players</a><a href="#stadiums">Stadiums</a><a href="#groups">Groups</a></nav>
+
+<header class="hero">
+<svg class="pitch" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#fff" stroke-width="3" aria-hidden="true"><rect x="20" y="20" width="760" height="460"/><line x1="400" y1="20" x2="400" y2="480"/><circle cx="400" cy="250" r="70"/><rect x="20" y="150" width="120" height="200"/><rect x="660" y="150" width="120" height="200"/></svg>
+<svg class="ball" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#fff7ec" stroke="#1a1040" stroke-width="3"/><polygon points="50,30 68,43 61,64 39,64 32,43" fill="#1a1040"/><g stroke="#1a1040" stroke-width="3"><path d="M50 30V4M68 43l24-8M61 64l15 20M39 64L24 84M32 43L8 35"/></g></svg>
+<div class="big disp" aria-hidden="true">26<span>26</span></div>
+<h1>Every team, player and stadium in one place.</h1>
+<p>Explore the biggest World Cup ever: three host nations, forty-eight teams and a trophy everyone wants to lift.</p>
+<a class="btn" href="#teams">Explore teams</a><a class="btn o" href="#stadiums">See stadiums</a>
+<div class="stats">
+<div class="stat"><b>48</b><small>Teams</small></div>
+<div class="stat"><b>104</b><small>Matches</small></div>
+<div class="stat"><b>16</b><small>Host cities</small></div>
+</div>
+</header>
+
+<section id="teams">
+<div class="head"><h2>Teams</h2>
+<div class="tools"><input id="q" type="search" placeholder="Search a team" aria-label="Search teams">
+<span id="conf" class="tools"></span></div></div>
+<div class="grid" id="teamGrid"></div>
+</section>
+
+<section id="players" class="alt">
+<div class="head"><h2>Players to watch</h2><div class="tools" id="pos"></div></div>
+<div class="grid" id="plGrid"></div>
+</section>
+
+<section id="stadiums">
+<div class="head"><h2>Stadiums</h2></div>
+<div class="grid" id="stGrid"></div>
+</section>
+
+<section id="groups" class="alt">
+<div class="head"><h2>Group stage preview</h2></div>
+<div class="groups" id="gr"></div>
+</section>
+
+<footer>Sample data for interface design. Replace with live data from your API.</footer>
+
+<script>
+const T=[
+["Argentina","🇦🇷","CONMEBOL",3,"#18d6c1"],["France","🇫🇷","UEFA",2,"#5b8cff"],["Brazil","🇧🇷","CONMEBOL",5,"#ffc83d"],["Morocco","🇲🇦","CAF",0,"#ff3d81"],
+["Spain","🇪🇸","UEFA",1,"#ff6b4a"],["England","🏴󠁧󠁢󠁥󠁮󠁧󠁿","UEFA",1,"#ff3d81"],["Germany","🇩🇪","UEFA",4,"#ffc83d"],["USA","🇺🇸","CONCACAF",0,"#5b8cff"]];
+const P=[
+["Lionel Messi","Argentina","🇦🇷","Forward",10,"#18d6c1"],["Kylian Mbappé","France","🇫🇷","Forward",10,"#5b8cff"],["Vinícius Jr","Brazil","🇧🇷","Forward",7,"#ffc83d"],["Achraf Hakimi","Morocco","🇲🇦","Defender",2,"#ff3d81"],
+["Lamine Yamal","Spain","🇪🇸","Forward",19,"#ff6b4a"],["Jude Bellingham","England","🏴󠁧󠁢󠁥󠁮󠁧󠁿","Midfielder",10,"#ff3d81"],["Jamal Musiala","Germany","🇩🇪","Midfielder",10,"#ffc83d"],["Christian Pulisic","USA","🇺🇸","Forward",10,"#5b8cff"]];
+const S=[
+["MetLife Stadium","East Rutherford, USA",82500,"Hosts the final","#ff3d81"],["Estadio Azteca","Mexico City, Mexico",83000,"Hosts the opening match","#18d6c1"],
+["AT&T Stadium","Arlington, USA",94000,"Hosts a semi-final","#ffc83d"],["SoFi Stadium","Inglewood, USA",70000,"Hosts the USA opener","#5b8cff"],
+["BC Place","Vancouver, Canada",54000,"Canada's west coast venue","#ff6b4a"],["BMO Field","Toronto, Canada",45000,"Canada's opening venue","#18d6c1"]];
+const G={A:["🇲🇽 Mexico","🇨🇦 Canada","🇲🇦 Morocco","🇧🇷 Brazil"],B:["🇦🇷 Argentina","🇫🇷 France","🇺🇸 USA","🇩🇪 Germany"],C:["🇪🇸 Spain","🏴󠁧󠁢󠁥󠁮󠁧󠁿 England","🇯🇵 Japan","🇸🇳 Senegal"]};
+const $=s=>document.querySelector(s);
+let conf="All",pos="All";
+function chips(el,list,cur,set){el.innerHTML=list.map(x=>`<button class="chip" aria-pressed="${x===cur}" data-v="${x}">${x}</button>`).join("");
+el.onclick=e=>{const v=e.target.dataset.v;if(v){set(v);}}}
+function teams(){const q=$("#q").value.toLowerCase();
+const r=T.filter(t=>(conf==="All"||t[2]===conf)&&t[0].toLowerCase().includes(q));
+$("#teamGrid").innerHTML=r.map(t=>`<article class="card" style="--c:${t[4]}"><div class="flag">${t[1]}</div><h3>${t[0]}</h3><p>${t[2]}</p><div class="stars" aria-label="${t[3]} titles">${t[3]?"★".repeat(t[3]):""}</div><span class="tag">${t[3]} ${t[3]==1?"title":"titles"}</span></article>`).join("")||`<div class="empty">No team matches "${q}". Try another name or clear the filter.</div>`;
+chips($("#conf"),["All","UEFA","CONMEBOL","CAF","CONCACAF"],conf,v=>{conf=v;teams()})}
+function players(){const r=P.filter(p=>pos==="All"||p[3]===pos);
+$("#plGrid").innerHTML=r.map(p=>`<article class="card pl" style="--c:${p[5]}"><div class="flag">${p[2]}</div><h3>${p[0]}</h3><p>${p[1]}</p><span class="tag">${p[3]}</span><div class="num" aria-hidden="true">${p[4]}</div></article>`).join("");
+chips($("#pos"),["All","Forward","Midfielder","Defender"],pos,v=>{pos=v;players()})}
+$("#stGrid").innerHTML=S.map(s=>`<article class="card stad" style="--c:${s[4]}"><div class="art"><svg viewBox="0 0 300 130" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><ellipse cx="150" cy="70" rx="130" ry="48"/><ellipse cx="150" cy="70" rx="95" ry="32"/><rect x="105" y="54" width="90" height="32" rx="4"/></svg></div><div class="in"><h3>${s[0]}</h3><p>${s[1]}</p><div class="cap">${s[2].toLocaleString()}<small>seats</small></div><div class="bar"><i style="width:${s[2]/94000*100}%"></i></div><span class="tag">${s[3]}</span></div></article>`).join("");
+$("#gr").innerHTML=Object.entries(G).map(([k,v])=>`<div class="card"><h3>Group ${k}</h3>${v.map((t,i)=>`<div class="row"><span>${t.slice(0,t.indexOf(" "))}</span><span>${t.slice(t.indexOf(" ")+1)}</span><em>0 pts</em></div>`).join("")}</div>`).join("");
+$("#q").oninput=teams;teams();players();
+</script>
+</body>
+</html>

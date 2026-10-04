@@ -1,0 +1,14 @@
+# Secrets
+.env
+
+# Trained artifacts and fetched data (regenerate with python -m app.ml.train)
+models/
+data/raw/
+data/*.csv
+data/*.json
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
