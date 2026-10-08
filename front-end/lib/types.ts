@@ -8,11 +8,13 @@
 
 export type MatchStage =
   | "GROUP"
+  | "R32"
   | "R16"
   | "QUARTER_FINAL"
   | "SEMI_FINAL"
   | "THIRD_PLACE"
-  | "FINAL";
+  | "FINAL"
+  | "FINAL_ROUND";
 
 export type MatchStatus = "SCHEDULED" | "LIVE" | "FINISHED";
 

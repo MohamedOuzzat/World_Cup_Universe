@@ -4,6 +4,7 @@ import {
   STADIUMS_FALLBACK,
   TEAMS_FALLBACK,
 } from "./data";
+import { loadAllHistoricalData } from "./historical";
 import type {
   EloTeam,
   Match,
@@ -197,3 +198,25 @@ export async function fetchTopElo(): Promise<Sourced<EloTeam[]>> {
   }));
   return withFallback(elo.sort((a, b) => b.elo - a.elo).slice(0, 20), false, model.error);
 }
+
+const HISTORICAL_CACHE: { matches?: Match[]; teams?: Team[]; stadiums?: Stadium[] } = {};
+
+
+export async function fetchAllHistoricalData(): Promise<Sourced<{ matches: Match[]; teams: Team[]; stadiums: Stadium[] }>> {
+  try {
+    if (!HISTORICAL_CACHE.matches) {
+      const loaded = await loadAllHistoricalData();
+      HISTORICAL_CACHE.matches = loaded.matches;
+      HISTORICAL_CACHE.teams = loaded.teams;
+      HISTORICAL_CACHE.stadiums = loaded.stadiums;
+    }
+    return withFallback({
+      matches: HISTORICAL_CACHE.matches!,
+      teams: HISTORICAL_CACHE.teams!,
+      stadiums: HISTORICAL_CACHE.stadiums!,
+    }, false);
+  } catch (error) {
+    return withFallback({ matches: MATCHES_FALLBACK, teams: TEAMS_FALLBACK, stadiums: STADIUMS_FALLBACK }, false, error);
+  }
+}
+

@@ -72,16 +72,16 @@ export function HomeHero() {
             priority={index === 0}
             sizes="100vw"
             quality={55}
-            className={`hero-slide object-cover ${index === slide ? "opacity-60" : "opacity-0"}`}
+            className={`hero-slide object-cover ${index === slide ? "opacity-100" : "opacity-0"}`}
             style={{ transform: index === slide ? "scale(1.12)" : "scale(1)" }}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-br from-surface-alt via-surface/85 to-surface/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface/95 via-surface/55 to-surface/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-surface/40" />
       </div>
 
-      <div className="pointer-events-none absolute -top-32 right-0 h-80 w-80 rounded-full bg-primary/30 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 left-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+      <div className="pointer-events-none absolute -top-32 right-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 left-10 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex max-w-3xl flex-col gap-6">
           <div className="chip w-fit bg-white/10 text-white">FIFA World Cup 2026</div>

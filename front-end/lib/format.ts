@@ -110,6 +110,7 @@ const STAGE_LABELS: Record<string, string> = {
   SEMI_FINAL: "Semi-final",
   THIRD_PLACE: "Third place",
   FINAL: "Final",
+  FINAL_ROUND: "Final round (decisive group)",
 };
 
 export function stageLabel(stage: string): string {

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { Player, Stadium, Team } from "@/lib/types";
-import { fetchPlayers, fetchStadiums, fetchTeams } from "@/lib/api";
+import type { Player, Team } from "@/lib/types";
+import { fetchPlayers, fetchTeams } from "@/lib/api";
 import { confederationOf, CONFEDERATIONS } from "@/lib/format";
 import { StatusBadge } from "@/components/status-badge";
 
@@ -67,7 +67,7 @@ export default function PlayersPage() {
           </select>
           <select
             value={conf}
-            onChange={(e) => setConf(e.target.value as any)}
+            onChange={(e) => setConf(e.target.value as (typeof CONFEDERATIONS)[number])}
             className="rounded-full border border-border bg-white/5 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/50"
           >
             {CONFEDERATIONS.map((c) => (

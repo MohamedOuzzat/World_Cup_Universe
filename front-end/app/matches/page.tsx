@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Match } from "@/lib/types";
-import { fetchMatches } from "@/lib/api";
+import { fetchAllHistoricalData } from "@/lib/api";
 import { formatDateTime, stageLabel } from "@/lib/format";
 import { StatusBadge } from "@/components/status-badge";
 
-const STAGES = ["GROUP", "R16", "QUARTER_FINAL", "SEMI_FINAL", "THIRD_PLACE", "FINAL"] as const;
+const STAGES = ["GROUP", "R32", "R16", "QUARTER_FINAL", "SEMI_FINAL", "THIRD_PLACE", "FINAL", "FINAL_ROUND"] as const;
 
 export default function MatchesPage() {
   const [matches, setMatches] = useState<Match[]>([]);
@@ -18,8 +18,8 @@ export default function MatchesPage() {
 
   useEffect(() => {
     (async () => {
-      const m = await fetchMatches();
-      setMatches(m.data);
+      const m = await fetchAllHistoricalData();
+      setMatches(m.data.matches);
       setLive(m.live);
     })();
   }, []);

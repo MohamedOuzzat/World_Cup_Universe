@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import type { Match } from "@/lib/types";
-import { fetchMatch } from "@/lib/api";
+import { fetchAllHistoricalData, fetchMatch } from "@/lib/api";
 import { formatDateTime, stageLabel } from "@/lib/format";
 import { StatusBadge } from "@/components/status-badge";
 
@@ -12,17 +12,30 @@ export default function MatchDetailPage() {
   const id = Number(params.id);
   const [match, setMatch] = useState<Match | null>(null);
   const [live, setLive] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const m = await fetchMatch(id);
-      setMatch(m.data);
-      setLive(m.live);
+      const hist = await fetchAllHistoricalData();
+      const historical = hist.data.matches.find((x) => x.id === id) || null;
+      if (historical) {
+        setMatch(historical);
+        setLive(hist.live);
+      } else {
+        const res = await fetchMatch(id);
+        setMatch(res.data);
+        setLive(res.live);
+      }
+      setLoaded(true);
     })();
   }, [id]);
 
-  if (!match) {
+  if (!loaded) {
     return <div className="card text-muted">Loading match...</div>;
+  }
+
+  if (!match) {
+    return <div className="card text-muted">Match not found.</div>;
   }
 
   return (
@@ -77,7 +90,7 @@ export default function MatchDetailPage() {
                     {g.scorer} {g.penalty ? "(P)" : ""} {g.ownGoal ? "(OG)" : ""}
                   </span>
                   <span className="text-muted">
-                    {g.teamName} · {g.minute}'
+                    {g.teamName} · {g.minute}&apos;
                   </span>
                 </div>
               ))}

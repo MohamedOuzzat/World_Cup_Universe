@@ -6,6 +6,7 @@ import { useTheme } from "./theme-provider";
 
 const LINKS = [
   { href: "/", label: "Home" },
+  { href: "/world-cups", label: "World Cups" },
   { href: "/teams", label: "Teams" },
   { href: "/matches", label: "Matches" },
   { href: "/groups", label: "Groups" },
